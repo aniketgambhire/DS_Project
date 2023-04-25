@@ -9,7 +9,7 @@ from dataclasses import dataclass
 # import modules
 from src.exception import CustomException
 from src.logger import logging
-
+from src.components.data_transformation import DataTransformation
 
 @dataclass
 class DataIngestionConfig:
@@ -49,4 +49,8 @@ class DataIngestion:
 
 if __name__=='__main__':
     obj = DataIngestion()
-    obj.initiate_data_ingestion()
+    train_path, test_path = obj.initiate_data_ingestion()
+
+    data_transformation = DataTransformation()
+    data_transformation.initiate_data_transformation(train_path, test_path)
+
